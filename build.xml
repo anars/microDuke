@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="microDuke" default="build" basedir=".">
+	<description>
+		microDuke Ant Build File
+	</description>
+	<property name="source.dir" location="source"/>
+	<property name="classes.dir" location="classes"/>
+	<property name="release.dir" location="release"/>
+	<target name="build" description="compile the source code">
+		<mkdir dir="${classes.dir}"/>
+		<javac includeantruntime="false" srcdir="${source.dir}" destdir="${classes.dir}" source="1.2" target="1.2"/>
+		<mkdir dir="${release.dir}"/>
+		<jar jarfile="${release.dir}/microDuke.jar" basedir="${classes.dir}" level="9">
+			<manifest>
+				<attribute name="Main-Class" value="com.anars.microduke.Listener"/>
+			</manifest>
+		</jar>
+		<checksum file="${release.dir}/microDuke.jar" forceOverwrite="yes"/>
+		<move verbose="true" todir="${release.dir}">
+			<fileset dir="${release.dir}">
+				<include name="**MD5"/>
+			</fileset>
+			<mapper type="regexp" from="(.*)jar.MD5" to="\1md5"/>
+		</move>
+		<copy file="license.txt" tofile="${release.dir}/microDuke.license"/>
+		<delete dir="${classes.dir}"/>
+	</target>
+</project>
