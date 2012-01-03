@@ -33,13 +33,13 @@ Compile microDuke project using ant make tool.
 
     ant
 
-When the compilation is completed successfully, you should see microDuke.jar file under "release" directory.
+When the compilation is completed successfully, you should see microDuke.jar file under "[release][3]" directory.
 
 ## Using standard JDK tools
 
 Clone the microDuke repository into a new directory
 
-    git clone git@github.com:anars/microDuke.git
+    git clone https://github.com/anars/microDuke.git
 
 Change the current working directory to microDuke repository directory
 
@@ -55,9 +55,9 @@ Compile microDuke project using java.
 
 When the compilation is completed successfully, create java archive file
 
-    jar cfe microDuke.jar com.anars.microduke.Listener -C classes/ .
+    jar cfe release/microDuke.jar com.anars.microduke.Listener -C classes/ .
 
-Now, you should see microDuke.jar file under repository directory. You may clean the working directory by typing;
+Now, you should see microDuke.jar file under "[release][3]" directory. You may clean the working directory by typing;
 
     rm -rf classes
 
