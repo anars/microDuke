@@ -2,7 +2,7 @@
 
 **microDuke** is a simple, standalone, multi-threaded, small web server written in Java. It aims to be fast, secure, efficient, portable, and minimum necessary implementation of HTTP/1.1 protocol.
 
-The [microDuke.jar][3] file is about 5 Kilobytes, exactly 5,348 Bytes! It is much smaller than this README.md file you are reading!!!
+The [microDuke.jar][3] file is about 5 Kilobytes, exactly 5,120 Bytes! It is much smaller than this README.md file you are reading!!!
 
 #Features:
 

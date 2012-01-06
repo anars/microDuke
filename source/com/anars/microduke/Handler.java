@@ -64,17 +64,14 @@ public class Handler
 
   public void run()
   {
-    super.run();
-    String requestString = null;
-    String requestPieces[] = null;
-    File requestedFile = null;
-    int httpCode = 200;
-    long responseLength = 0;
-    String mimeType = null;
     try
       {
-        requestString = _bufferedReader.readLine();
-        requestPieces = requestString.split("\\s+");
+        int httpCode = 200;
+        long responseLength = 0;
+        File requestedFile = null;
+        String mimeType = "application/octet-stream";
+        String requestString = _bufferedReader.readLine();
+        String requestPieces[] = requestString.split("\\s+");
         while (!_bufferedReader.readLine().equals(""))
           ;
         if (requestPieces.length != 3)
@@ -99,7 +96,7 @@ public class Handler
                   }
                 catch (Exception exception)
                   {
-                    mimeType = "application/octet-stream";
+                    ;
                   }
               }
           }
@@ -126,13 +123,11 @@ public class Handler
             (responseLength > 0 ? "Content-Length: " + responseLength + "\n" : "") + "\n");
         if (httpCode == 200)
           {
-            int chunkSize = ((Runtime.getRuntime().freeMemory() * 0.75) / 2 >= Integer.MAX_VALUE ? Integer.MAX_VALUE : (int) ((Runtime.getRuntime().freeMemory() * 0.75) / 2));
-            if (requestedFile.length() < chunkSize)
-              chunkSize = (int) requestedFile.length();
-            byte[] chunkBytes = new byte[chunkSize];
+            int read = 0;
+            byte[] buffer = new byte[10240];
             InputStream fileInputStream = new FileInputStream(requestedFile);
-            while (fileInputStream.read(chunkBytes) > 0)
-              _dataOutputStream.write(chunkBytes);
+            while ((read = fileInputStream.read(buffer)) > 0)
+              _dataOutputStream.write(buffer, 0, read);
             fileInputStream.close();
           }
         else
@@ -149,35 +144,32 @@ public class Handler
 
   private void closeConnection()
   {
-    if (_bufferedReader != null)
-      try
-        {
-          _bufferedReader.close();
-        }
-      catch (Exception exception)
-        {
-          printError(exception);
-        }
+    try
+      {
+        _bufferedReader.close();
+      }
+    catch (Exception exception)
+      {
+        printError(exception);
+      }
     _bufferedReader = null;
-    if (_dataOutputStream != null)
-      try
-        {
-          _dataOutputStream.close();
-        }
-      catch (Exception exception)
-        {
-          printError(exception);
-        }
+    try
+      {
+        _dataOutputStream.close();
+      }
+    catch (Exception exception)
+      {
+        printError(exception);
+      }
     _dataOutputStream = null;
-    if (_socket != null)
-      try
-        {
-          _socket.close();
-        }
-      catch (Exception exception)
-        {
-          printError(exception);
-        }
+    try
+      {
+        _socket.close();
+      }
+    catch (Exception exception)
+      {
+        printError(exception);
+      }
     _socket = null;
   }
 
