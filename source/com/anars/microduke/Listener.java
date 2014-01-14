@@ -38,11 +38,12 @@ public class Listener
   {
     int listenPort = 0;
     InetAddress bindAddress = null;
+    ServerSocket serverSocket = null;
     File rootPath = new File(System.getProperty("user.dir"));
     for (int index = 0; index < args.length; index++)
       {
         String values[] = args[index].split("=");
-        if (values[0].startsWith("-port"))
+        if (values[0].equals("-port"))
           {
             try
               {
@@ -55,7 +56,7 @@ public class Listener
                 errorExit("Invalid -port value", -2);
               }
           }
-        else if (values[0].startsWith("-address"))
+        else if (values[0].equals("-address"))
           {
             try
               {
@@ -66,7 +67,7 @@ public class Listener
                 errorExit("Invalid -address value", -3);
               }
           }
-        else if (values[0].startsWith("-path"))
+        else if (values[0].equals("-path"))
           {
             try
               {
@@ -79,7 +80,7 @@ public class Listener
                 errorExit("Invalid -path value", -5);
               }
           }
-        else if (values[0].startsWith("-help"))
+        else if (values[0].equals("-help"))
           {
             System.out.println("\nmicroDuke version 1.0\n" +
                 "Copyright (c) " + Calendar.getInstance().get(Calendar.YEAR) + " Anar Software LLC. < http://anars.com >\n\n" +
@@ -106,7 +107,6 @@ public class Listener
         else
           errorExit("Unknown parameter \"" + args[index] + "\"", -6);
       }
-    ServerSocket serverSocket = null;
     try
       {
         serverSocket = new ServerSocket(listenPort, 0, bindAddress);
