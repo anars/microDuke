@@ -8,7 +8,7 @@
 	<property name="release.dir" location="release"/>
 	<target name="build" description="compile the source code">
 		<mkdir dir="${classes.dir}"/>
-		<javac includeantruntime="false" srcdir="${source.dir}" destdir="${classes.dir}" source="1.2" target="1.2"/>
+		<javac includeantruntime="false" srcdir="${source.dir}" destdir="${classes.dir}" source="1.2" target="1.2" debug="off" debuglevel="none" optimize="on"/>
 		<mkdir dir="${release.dir}"/>
 		<jar jarfile="${release.dir}/microDuke.jar" basedir="${classes.dir}" level="9">
 			<manifest>
