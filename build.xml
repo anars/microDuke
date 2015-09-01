@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="microDuke" default="build" basedir=".">
 	<description>
-		microDuke Ant Build File - Copyright (c) 2012 - 2014 Anar Software LLC. (http://anars.com)
+		microDuke Ant Build File - Copyright (c) 2012 - 2015 Anar Software LLC. (http://anars.com)
 	</description>
 	<property name="source.dir" location="source"/>
 	<property name="classes.dir" location="classes"/>

@@ -1,6 +1,6 @@
 /**
  * microDuke - Java Based Micro Web Server
- * Copyright (c) 2012 - 2014 Anar Software LLC. < http://anars.com >
+ * Copyright (c) 2012 - 2015 Anar Software LLC. < http://anars.com >
  * 
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 

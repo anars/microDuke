@@ -1,6 +1,6 @@
 /**
  * microDuke - Java Based Micro Web Server
- * Copyright (c) 2012 - 2014 Anar Software LLC. < http://anars.com >
+ * Copyright (c) 2012 - 2015 Anar Software LLC. < http://anars.com >
  * 
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -83,7 +83,7 @@ public class Listener
         else if (values[0].equals("-help"))
           {
             System.out.println("\nmicroDuke version 1.0\n" +
-                "Copyright (c) " + Calendar.getInstance().get(Calendar.YEAR) + " Anar Software LLC. < http://anars.com >\n\n" +
+                "Copyright (c) 2012-" + Calendar.getInstance().get(Calendar.YEAR) + " Anar Software LLC. < http://anars.com >\n\n" +
                 "This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\n" +
                 "This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n" +
                 "See the GNU General Public License for more details at http://www.gnu.org/licenses\n\n" +
